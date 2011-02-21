@@ -1,4 +1,21 @@
 ToolboxSearch::Application.routes.draw do
+  root :to => "projects#index"
+
+  controller :projects do
+    match 'most_popular'
+    match 'projects_list' => :list
+    match 'about'
+  end
+  # map.with_options(:controller => 'projects') do |x|
+  #   x.most_popular '/projects/most_popular', :action => 'most_popular'
+  #   x.projects_list '/projects/list', :action => 'list'
+  #   x.about '/about', :action => 'about'
+  # end
+
+  resources :projects
+  resources :crawls
+  resources :categories
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

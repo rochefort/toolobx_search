@@ -1,0 +1,19 @@
+<%= render :partial => 'shared/projects_search' %>
+<%- if params[:search] -%>
+  <%- if @projects.size > 0 -%>
+    <%= render :partial => 'shared/tag_cloud',:object => @projects %>
+    <%= render :partial => 'shared/projects_list',:object => @projects %>
+  <%- else -%>
+    We did not find results.
+  <%- end -%>
+<%- else -%>
+<div id="top_list" class="clearfix">
+  <%= render :partial => 'shared/projects_top_list',:object => @daily_top10_projects, :locals => { :h2_title => 'daily top 10'} %>
+  <%= render :partial => 'shared/projects_top_list',:object => @weekly_top10_projects, :locals => { :h2_title => 'weekly top 10'} %>
+</div>
+<div id="top_list" class="clearfix">
+  <%= render :partial => 'shared/projects_top_list',:object => @monthly_top10_projects, :locals => { :h2_title => 'monthly top 10'} %>
+  <%= render :partial => 'shared/projects_top_list_all',:object => @top10_projects, :locals => { :h2_title => 'all top 10'} %>
+</div>
+<%= render :partial => 'shared/tag_cloud',:object => @projects %>
+<%- end -%>

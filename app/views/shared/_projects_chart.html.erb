@@ -1,0 +1,69 @@
+<script type="text/javascript">
+var chart1; // globally available
+var x_cnt = 0;
+var x_all = new Array(<%= projects_chart[0][:x_all].size %>);
+<% projects_chart[0][:x_all].each_with_index do |x, i| -%>
+x_all[<%= i %>] = <%= x %>;
+<% end -%>
+$(document).ready(function() {
+     chart = new Highcharts.Chart({
+        chart: {
+           renderTo: '<%= chart_id %>',
+           defaultSeriesType: 'line',
+           margin: [50, 220, 60, 80]
+        },
+        title: {
+           text: '<%= projects_chart[0][:type] %> chart',
+           style: {
+             color: '#88261a',
+           },
+           x: -30,
+        },
+        xAxis: {
+           categories: [<%= h projects_chart[0][:x_axis] %>]
+        },
+        yAxis: {
+           title: {
+              text: 'Score',
+              rotation: 0,
+              margin: 60
+           },
+           min: 0,
+        },
+        tooltip: {
+           formatter: function() {
+             var rtn;
+             if ( '<%= projects_chart[0][:type] %>' == 'weekly' ) {
+               rtn = '<b>' + this.series.name + '</b><br/>' + this.x + ': ' + this.y;
+             } else {
+               rtn = '<b>' + this.series.name + '</b><br/>' + x_all[x_cnt] + ': ' + this.y;
+               x_cnt = x_cnt + 1;
+               if ( x_cnt > 30) { x_cnt = 0 }
+             }
+             return rtn;
+           }
+        },
+        legend: {
+           layout: 'vertical',
+           align: 'left',
+           style: {
+                    left: 'auto',
+                    bottom: 'auto',
+                    right: '10px',
+                    top: '100px'
+                  },
+           backgroundColor: '#FFFFFF',
+           borderWidth: 1
+        },
+        series: [
+          <% projects_chart.each do |pc| %>
+          {
+           name: '<%= h pc[:name] %>',
+           data: [<%= h pc[:data] %>]
+          },
+          <% end %>
+          ]
+     });
+  });
+</script>
+<div id="<%= chart_id %>" class="projects_chart rounded"></div>

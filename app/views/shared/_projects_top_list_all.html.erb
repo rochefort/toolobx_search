@@ -1,0 +1,17 @@
+<div class="project_top_list rounded">
+  <h2 class="title clearfix"><%= h2_title %><span class="subtitle">&nbsp;</span></h2>
+  <% projects_top_list_all.each_with_index do |project, i| %>
+    <div class="rank rounded1">
+      <div class="rank_main clearfix">
+        <h3><%= i + 1 %>.<%= link_to project.name, project_path(project) %></h3>
+        <div class="rank_score">
+          <div class="rank_score_diff"><%= project.score %></div>&nbsp;
+        </div>
+        <!-- div#rank_score -->
+      </div>
+      <!-- div#rank_main -->
+      <div class="rank_category"><%=link_to project.category_name, category_path(project.category_id) + url_name(project.category_name) %></div>
+    </div>
+    <!-- div#rank -->
+  <% end %>
+</div>

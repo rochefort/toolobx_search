@@ -1,0 +1,24 @@
+<div class="clearfix">
+  <div class="project_list rounded <%= "small" if params[:controller] == "categories" %>">
+    <table>
+      <tr>
+        <th><%= sort_link("project") %></th>
+        <% if params[:controller] != "categories" %>
+        <th><%= sort_link("category") %></th>
+        <% end %>
+        <th><%= sort_link("score") %></th>
+      </tr>
+
+    <% projects_list.each do |project| %>
+      <tr class="<%= cycle("even", "odd")%>">
+        <td><%=link_to project.name, project_path(project) %></td>
+        <% if params[:controller] != "categories" %>
+        <td><%=link_to project.category.name, category_path(project.category) %></td>
+        <% end %>
+        <td class='right'><%= project.score %></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= will_paginate projects_list %>
+  </div>
+</div>

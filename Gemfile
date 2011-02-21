@@ -1,13 +1,28 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'mysql2', '0.2.6'
 gem 'will_paginate', '3.0.pre2'
 gem 'thinking-sphinx', '2.0.2', :require => 'thinking_sphinx'
+gem 'jquery-rails'
+
+# batch
+gem 'nokogiri'
+
+# deploy
+gem 'capistrano'
+
+group :development, :test do
+  gem 'rspec-rails', '2.5.0'
+  gem 'cucumber', '0.10.0'
+  gem 'cucumber-rails', '0.3.2'
+  gem 'webrat', '0.7.3'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

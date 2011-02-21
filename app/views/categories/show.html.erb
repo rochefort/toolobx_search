@@ -1,0 +1,13 @@
+<div id="category_main" class="clearfix">
+<h2><%=link_to h(@category.name), 'http://ruby-toolbox.com' + @category.link, :popup => true %></h2>
+<p><%=h @category.description %></p>
+<hr />
+<%= render :partial => 'shared/projects_chart',:object => @weekly_category_projects, :locals => {:chart_id => "weekly_category_chart"} %>
+<hr />
+<%= render :partial => 'shared/projects_chart',:object => @monthly_category_projects, :locals => {:chart_id => "monthly_category_chart"} %>
+<hr />
+
+<%= render :partial => 'shared/tag_cloud',:object => @projects %>
+<%= render :partial => 'shared/projects_list',:object => @projects %>
+</div>
+<div id=back_button><%= link_to 'Back', :back %></div>

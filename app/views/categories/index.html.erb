@@ -1,0 +1,19 @@
+<%= render :partial => 'shared/projects_search' %>
+<h2 class="list">categories list</h2>
+<div id="categories_list" class="rounded">
+  <table id="categories">
+    <tr>
+      <th><%= sort_link("category") %>&nbsp;<span class="sub-th">(total score)</span></th>
+      <th>description</th>
+      <th><%= sort_link("project_cnt") %></th>
+    </tr>
+  <% @categories.each do |category| %>
+    <tr class="<%= cycle("even", "odd")%>">
+      <td><%=link_to h(category.name), category_path(category) %> (<%=h category.projects.map(&:score).sum %>)</td>
+      <td><%=h category.description %></td>
+      <td class='right'><%=h category.project_count %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<div id=back_button><%= link_to 'Back', :back %></div>

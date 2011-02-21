@@ -14,6 +14,7 @@ module ToolboxSearch
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -38,5 +39,21 @@ module ToolboxSearch
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.logger = Logger.new(config.paths.log.first)
+    config.logger.formatter = Logger::Formatter.new
   end
 end
+
+class Logger
+  class Formatter
+    def call(severity, time, progname, msg)
+      format = "[%s #%d] %5s -- %s: %s\n"
+      format % ["#{time.strftime('%Y-%m-%d %H:%M:%S')}.#{'%06d' % time.usec.to_s}",
+                  $$, severity, progname, msg2str(msg)]
+    end
+  end
+end
+
+require 'will_paginate'
+require 'thinking_sphinx'

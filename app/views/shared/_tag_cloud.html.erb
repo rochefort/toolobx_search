@@ -1,0 +1,11 @@
+<div class="tag_cloud rounded">
+  <h2 class="title"><%= @tag_cloud_title %></h2>
+  <ul>
+    <% tag_cloud tag_cloud.sort_by{|projects| projects.name.downcase} do |projects, index| -%>
+      <li class=<%= "level#{index}" %>><%= link_to(projects.name, projects) %></li>
+    <% end %>
+  </ul>
+  <% if tag_cloud.next_page %>
+  <span><%=link_to 'see more', most_popular_path(:search => params[:search]) %></span>
+  <% end %>
+</div>
