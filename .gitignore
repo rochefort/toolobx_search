@@ -1,6 +1,7 @@
-.DS_store
+.DS_Store
 .bundle
 config/database.yml
+config/setting.yml
 config/deploy.rb
 config/*.sphinx.conf
 db/*.sqlite3
