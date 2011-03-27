@@ -22,6 +22,7 @@ group :development, :test do
   gem 'cucumber', '0.10.0'
   gem 'cucumber-rails', '0.3.2'
   gem 'webrat', '0.7.3'
+  gem 'rails-erd'
 end
 
 # Use unicorn as the web server
