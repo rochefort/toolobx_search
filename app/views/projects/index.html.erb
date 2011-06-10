@@ -10,10 +10,10 @@
 
 <div id="top_list" class="clearfix">
 <h2>Top10 Score Ranking</h2>
-  <%= render :partial => 'shared/projects_top_list',:object => @daily_top10_projects,   :locals => { :h3_title => 'daily' } %>
-  <%= render :partial => 'shared/projects_top_list',:object => @weekly_top10_projects,  :locals => { :h3_title => 'weekly' } %>
-  <%= render :partial => 'shared/projects_top_list',:object => @monthly_top10_projects, :locals => { :h3_title => 'monthly' } %>
-  <%= render :partial => 'shared/projects_top_list_all',:object => @top10_projects,     :locals => { :h3_title => 'all' } %>
+  <%= render :partial => 'shared/projects_top_list',:object => @daily_top10_projects,   :locals => { :h3_title => 'Daily' } %>
+  <%= render :partial => 'shared/projects_top_list',:object => @weekly_top10_projects,  :locals => { :h3_title => 'Weekly' } %>
+  <%= render :partial => 'shared/projects_top_list',:object => @monthly_top10_projects, :locals => { :h3_title => 'Monthly' } %>
+  <%= render :partial => 'shared/projects_top_list_all',:object => @top10_projects,     :locals => { :h3_title => 'All' } %>
 </div>
 <%= render :partial => 'shared/tag_cloud',:object => @projects %>
 <%- end -%>
