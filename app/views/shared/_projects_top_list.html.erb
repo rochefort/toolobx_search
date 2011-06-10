@@ -4,11 +4,11 @@
     <div class="rank">
       <div class="rank_main clearfix">
         <div class="name"><h4><%= i + 1 %>.<%= link_to project.name.capitalize, project_path(project) %></h4></div>
-        <div class="score"><%= project.diff_score %></div>
+        <div class="score"><%= number_with_delimiter(project.diff_score) %></div>
       </div>
       <div class="rank_sub clearfix">
         <div class="name"><%=link_to project.category_name, category_path(project.category_id) + url_name(project.category_name) %></div>
-        <div class="score">(<%= project.score %>)</div>
+        <div class="score">(<%= number_with_delimiter(project.score) %>)</div>
       </div>
     </div>
     <!-- div#rank -->

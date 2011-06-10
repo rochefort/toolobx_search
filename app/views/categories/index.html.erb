@@ -9,9 +9,9 @@
     </tr>
   <% @categories.each do |category| %>
     <tr class="<%= cycle("even", "odd")%>">
-      <td><%=link_to h(category.name), category_path(category) %> (<%=h category.projects.map(&:score).sum %>)</td>
-      <td><%=h category.description %></td>
-      <td class='right'><%=h category.project_count %></td>
+      <td><%=link_to category.name, category_path(category) %> (<%= number_with_delimiter(category.projects.map(&:score).sum) %>)</td>
+      <td><%= category.description %></td>
+      <td class='right'><%= category.project_count %></td>
     </tr>
   <% end %>
   </table>

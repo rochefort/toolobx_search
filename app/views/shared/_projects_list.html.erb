@@ -15,7 +15,7 @@
         <% if params[:controller] != "categories" %>
         <td><%=link_to project.category.name, category_path(project.category) %></td>
         <% end %>
-        <td class='right'><%= project.score %></td>
+        <td class='right'><%= number_with_delimiter(project.score) %></td>
       </tr>
     <% end %>
     </table>
