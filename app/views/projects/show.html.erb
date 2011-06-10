@@ -1,6 +1,6 @@
 <div id="project_main" class="clearfix">
   <div id="project_title">
-    <h2><%=link_to_if(@project.project_link, @project.name, @project.project_link, :popup => true) %></h2>
+    <h2><%=link_to_if(@project.project_link, @project.name.capitalize, @project.project_link, :popup => true) %></h2>
     <div id="project_category">(<%= link_to @project.category.name, category_path(@project.category) %>)</div>
   </div>
   <div id="project_score">

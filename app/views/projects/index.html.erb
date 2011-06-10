@@ -7,13 +7,13 @@
     We did not find results.
   <%- end -%>
 <%- else -%>
+
 <div id="top_list" class="clearfix">
-  <%= render :partial => 'shared/projects_top_list',:object => @daily_top10_projects, :locals => { :h2_title => 'daily top 10'} %>
-  <%= render :partial => 'shared/projects_top_list',:object => @weekly_top10_projects, :locals => { :h2_title => 'weekly top 10'} %>
-</div>
-<div id="top_list" class="clearfix">
-  <%= render :partial => 'shared/projects_top_list',:object => @monthly_top10_projects, :locals => { :h2_title => 'monthly top 10'} %>
-  <%= render :partial => 'shared/projects_top_list_all',:object => @top10_projects, :locals => { :h2_title => 'all top 10'} %>
+<h2>Top10 Score Ranking</h2>
+  <%= render :partial => 'shared/projects_top_list',:object => @daily_top10_projects,   :locals => { :h3_title => 'daily' } %>
+  <%= render :partial => 'shared/projects_top_list',:object => @weekly_top10_projects,  :locals => { :h3_title => 'weekly' } %>
+  <%= render :partial => 'shared/projects_top_list',:object => @monthly_top10_projects, :locals => { :h3_title => 'monthly' } %>
+  <%= render :partial => 'shared/projects_top_list_all',:object => @top10_projects,     :locals => { :h3_title => 'all' } %>
 </div>
 <%= render :partial => 'shared/tag_cloud',:object => @projects %>
 <%- end -%>

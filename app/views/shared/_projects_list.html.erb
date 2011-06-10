@@ -1,5 +1,5 @@
 <div class="clearfix">
-  <div class="project_list rounded <%= "small" if params[:controller] == "categories" %>">
+  <div class="project_list<%= " small" if params[:controller] == "categories" %>">
     <table>
       <tr>
         <th><%= sort_link("project") %></th>
@@ -11,7 +11,7 @@
 
     <% projects_list.each do |project| %>
       <tr class="<%= cycle("even", "odd")%>">
-        <td><%=link_to project.name, project_path(project) %></td>
+        <td><%=link_to project.name.capitalize, project_path(project) %></td>
         <% if params[:controller] != "categories" %>
         <td><%=link_to project.category.name, category_path(project.category) %></td>
         <% end %>

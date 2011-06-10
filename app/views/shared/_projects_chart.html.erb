@@ -10,12 +10,13 @@ $(document).ready(function() {
         chart: {
            renderTo: '<%= chart_id %>',
            defaultSeriesType: 'line',
-           margin: [50, 220, 60, 80]
+           margin: [50, 220, 60, 80],
+           backgroundColor: '#222'
         },
         title: {
            text: '<%= projects_chart[0][:type] %> chart',
            style: {
-             color: '#88261a',
+             color: '#ccc'
            },
            x: -30,
         },
@@ -26,7 +27,10 @@ $(document).ready(function() {
            title: {
               text: 'Score',
               rotation: 0,
-              margin: 60
+              margin: 60,
+              style: {
+                color: '#ccc'
+              },
            },
            min: 0,
         },
@@ -50,9 +54,9 @@ $(document).ready(function() {
                     left: 'auto',
                     bottom: 'auto',
                     right: '10px',
-                    top: '100px'
+                    top: '100px',
                   },
-           backgroundColor: '#FFFFFF',
+           backgroundColor: '#333',
            borderWidth: 1
         },
         series: [
@@ -66,4 +70,4 @@ $(document).ready(function() {
      });
   });
 </script>
-<div id="<%= chart_id %>" class="projects_chart rounded"></div>
+<div id="<%= chart_id %>" class="projects_chart"></div>

@@ -27,8 +27,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @weekly_project  = [Project.for_a_week(@project.name, @project.project_link, @crawl_id)]
-    @monthly_project = [Project.for_a_month(@project.name, @project.project_link, @crawl_id)]
+    @weekly_project  = [Project.for_a_week(@project.name.capitalize, @project.project_link, @crawl_id)]
+    @monthly_project = [Project.for_a_month(@project.name.capitalize, @project.project_link, @crawl_id)]
   end
 
 
@@ -39,6 +39,6 @@ class ProjectsController < ApplicationController
 
   def set_title(search, number = 0)
     return "tags(#{search})" if search
-    number > 0 ? "top50 tags" : "tags"
+    number > 0 ? "Top50 Tags" : "Tags"
   end
 end
