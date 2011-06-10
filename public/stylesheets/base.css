@@ -186,6 +186,7 @@ div#search  input[type="submit"] {
   background-color: #000000;
   color: #666;
   padding: 1px 6px;
+  border: 2px outset #666;
   font-family: 'Lucida Grande', verdana, arial, "ＭＳ Ｐゴシック", "平成角ゴシック", sans-serif;
 }
 
