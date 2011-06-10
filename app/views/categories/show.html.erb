@@ -1,6 +1,6 @@
 <div id="category_main" class="clearfix">
 <h2><%=link_to h(@category.name), 'http://ruby-toolbox.com' + @category.link, :popup => true %></h2>
-<p><%=h @category.description %></p>
+<p><%= @category.description %></p>
 <hr />
 <%= render :partial => 'shared/projects_chart',:object => @weekly_category_projects, :locals => {:chart_id => "weekly_category_chart"} %>
 <hr />
