@@ -23,6 +23,7 @@ class Project < ActiveRecord::Base
     indexes :name, :as => :project_name, :sortable => true
     indexes description
     indexes category(:name), :as => :category_name, :sortable => true
+    indexes score, :sortable => true
     # attributes
     has crawl_id, score, updated_at, category.name
   end
@@ -32,12 +33,12 @@ class Project < ActiveRecord::Base
     per_page ||= 30
 
     order = case order_type
-    when "project_d" then "projects.name DESC"
-    when "project_a" then "projects.name ASC"
+    when "project_d" then keyword.blank?? "projects.name DESC" : "project_name DESC"
+    when "project_a" then keyword.blank?? "projects.name ASC": "project_name ASC"
     when "category_d" then keyword.blank?? "categories.name DESC" : "category_name DESC"
     when "category_a" then keyword.blank?? "categories.name ASC" : "category_name ASC"
-    when "score_d" then "projects.score DESC"
-    when "score_a" then "projects.score ASC"
+    when "score_d" then keyword.blank?? "projects.score DESC" : "score DESC"
+    when "score_a" then keyword.blank?? "projects.score ASC" : "score ASC"
     else
       keyword.blank?? "projects.score DESC, projects.updated_at ASC" : "score DESC, updated_at ASC"
     end
@@ -45,6 +46,8 @@ class Project < ActiveRecord::Base
     if keyword.blank?
       popular(crawl_id, order).paginate(:page => page, :per_page => per_page)
     else
+logger.info { "xxxxxxxxxxxx" }
+logger.info { order }
       search(keyword, :page => page, :per_page => per_page,
                       :include => [:category, :scores],
                       :with => {:crawl_id => crawl_id},
