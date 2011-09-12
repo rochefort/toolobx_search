@@ -23,9 +23,10 @@ class Project < ActiveRecord::Base
     indexes :name, :as => :project_name, :sortable => true
     indexes description
     indexes category(:name), :as => :category_name, :sortable => true
-    indexes score, :sortable => true
+
     # attributes
-    has crawl_id, score, updated_at, category.name
+    has score, :type => :integer
+    has crawl_id, updated_at, category.name
   end
 
   def self.search_keyword(crawl_id, keyword, page, per_page, order_type)
@@ -46,8 +47,6 @@ class Project < ActiveRecord::Base
     if keyword.blank?
       popular(crawl_id, order).paginate(:page => page, :per_page => per_page)
     else
-logger.info { "xxxxxxxxxxxx" }
-logger.info { order }
       search(keyword, :page => page, :per_page => per_page,
                       :include => [:category, :scores],
                       :with => {:crawl_id => crawl_id},
