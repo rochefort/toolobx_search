@@ -21,8 +21,8 @@ module ProjectsHelper
   def sort_link(type)
     #diff "#{type}_d" == params[:order]
 
-    link = type + link_to('▼', {:search => params[:search], :order => "#{type}_a"}, active_sort("#{type}_a")) +
-                  link_to('▲', {:search => params[:search], :order => "#{type}_d"}, active_sort("#{type}_d"))
+    link = type + link_to('▲', {:search => params[:search], :order => "#{type}_a"}, active_sort("#{type}_a")) +
+                  link_to('▼', {:search => params[:search], :order => "#{type}_d"}, active_sort("#{type}_d"))
     link.html_safe
   end
 
