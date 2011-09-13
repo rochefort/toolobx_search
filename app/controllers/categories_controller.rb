@@ -10,13 +10,13 @@ class CategoriesController < ApplicationController
     @tag_cloud_title = "#{@category.name} Tags"
 
     # 上位10件のみチャートデータを取得
-    @weekly_category_projects = @category.projects[0...10].map do |project|
+    @weekly_category_projects = @category.projects[0...10].map { |project|
       Project.for_a_week(project.name.capitalize, project.project_link, @crawl_id)
-    end
+    }.compact
 
-    @monthly_category_projects = @category.projects[0...10].map do |project|
+    @monthly_category_projects = @category.projects[0...10].map { |project|
       Project.for_a_month(project.name.capitalize, project.project_link, @crawl_id)
-    end
+    }.compact
 
     @projects = Project.category_projects(@crawl_id, params[:id], params[:order])
   end

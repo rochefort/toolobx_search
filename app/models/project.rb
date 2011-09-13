@@ -78,7 +78,8 @@ class Project < ActiveRecord::Base
 
   def self.for_a_week(name, link, crawl_id)
     project = period(name, link, Crawl.before_id(crawl_id, 7), crawl_id).paginate(:page => 1, :per_page => 31)
-
+    return if project.size == 0
+    
     { :name => name,
       :data => project[0].scores.map(&:score).join(','),
       :type => "weekly",
@@ -88,6 +89,7 @@ class Project < ActiveRecord::Base
 
   def self.for_a_month(name, link, crawl_id)
     project = period(name, link, Crawl.before_id(crawl_id, 30), crawl_id).paginate(:page => 1, :per_page => 31)
+    return if project.size == 0
 
     { :name => name,
       :data => project[0].scores.map(&:score).join(','),

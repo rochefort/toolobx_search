@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   belongs_to :crawl
-  has_many :projects
+  has_many :projects, :order => 'score DESC'
 
   named_scope :popular, lambda{ |crawl_id, order| {
                               :conditions => { :crawl_id => crawl_id},
