@@ -1,6 +1,6 @@
 <div id="project_main" class="clearfix">
   <div id="project_title">
-    <h2><%=link_to_if(@project.project_link, @project.name.capitalize, @project.project_link, :popup => true) %></h2>
+    <h2><%=link_to_if(@project.project_link, @project.name.capitalize, @project.project_link, :target => '_blank') %></h2>
     <div id="project_category">(<%= link_to @project.category.name, category_path(@project.category) %>)</div>
   </div>
   <div id="project_score">
@@ -14,11 +14,11 @@
   </div>
   <div id="project_link">
     <ul>
-      <%= content_tag(:li, link_to('web',  @project.web_link,    :popup => true)) if @project.web_link -%>
-      <%= content_tag(:li, link_to('wiki', @project.wiki_link,   :popup => true)) if @project.wiki_link -%>
-      <%= content_tag(:li, link_to('src',  @project.source_link, :popup => true)) if @project.source_link -%>
-      <%= content_tag(:li, link_to('rdoc', @project.rdoc_link,   :popup => true)) if @project.rdoc_link -%>
-      <%= content_tag(:li, link_to('toolbox', 'http://ruby-toolbox.com' + @project.category.link, :popup => true, :class => 'toolbox')) -%>
+      <%= content_tag(:li, link_to('web',  @project.web_link,    :target => '_blank')) if @project.web_link -%>
+      <%= content_tag(:li, link_to('wiki', @project.wiki_link,   :target => '_blank')) if @project.wiki_link -%>
+      <%= content_tag(:li, link_to('src',  @project.source_link, :target => '_blank')) if @project.source_link -%>
+      <%= content_tag(:li, link_to('rdoc', @project.rdoc_link,   :target => '_blank')) if @project.rdoc_link -%>
+      <%= content_tag(:li, link_to('toolbox', "http://ruby-toolbox.com#{@project.category.link}", :target => '_blank', :class => 'toolbox')) -%>
     </ul>
   </div>
 </div>

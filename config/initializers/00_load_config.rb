@@ -1,1 +1,1 @@
-MyConfig = YAML.load_file("#{RAILS_ROOT}/config/setting.yml")
+MyConfig = YAML.load_file("#{Rails.root.to_s}/config/setting.yml")

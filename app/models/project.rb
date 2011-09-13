@@ -2,11 +2,11 @@ class Project < ActiveRecord::Base
   belongs_to :crawl
   belongs_to :category
   has_many :scores
-  named_scope :popular, lambda{ |crawl_id, order| {
+  scope :popular, lambda{ |crawl_id, order| {
                                 :conditions => ["scores.crawl_id = ?", crawl_id],
                                 :order => order, :include => [:category, :scores]}}
 
-  named_scope :period, lambda{ |name, link, from_crawl_id, to_crawl_id| {
+  scope :period, lambda{ |name, link, from_crawl_id, to_crawl_id| {
                                 :conditions => ["projects.name = ? AND project_link = ? AND scores.crawl_id between ? AND ?",
                                                  name, link, from_crawl_id, to_crawl_id],
                                 :order => "projects.name, project_link, projects.crawl_id",

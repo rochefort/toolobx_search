@@ -1,5 +1,5 @@
 class Crawl < ActiveRecord::Base
-  named_scope :active, :conditions => {:result => 1}
+  scope :active, :conditions => {:result => 1}
   
   has_many :categories
   def self.max_id
