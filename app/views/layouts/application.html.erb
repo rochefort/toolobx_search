@@ -12,14 +12,14 @@
 <body>
   <div id="header" class="clearfix">
     <div id="header_title">
-      <h1><%= link_to('The Ruby Toolbox Search', root_path) %>
-        <% cache("updated", :expires_in => 30.minutes) do %>
-        <span id="header_updated" title="<%= "#{@recnetly_crawl.project_count} projects in #{@recnetly_crawl.category_count} categories" %>">
-          <%= "updated at: #{@recnetly_crawl.created_at.strftime("%b %d")}" %>
-        </span>
-        <% end %>
-      </h1>
+      <h1><%= link_to(image_tag('logo.png', :size => '405x38', :border => '0', :alt => 'サイトロゴ'), root_path) %></h1>
     </div>
+    <% cache("updated", :expires_in => 30.minutes) do %>
+    <div id="header_info" title="<%= "in #{@recnetly_crawl.category_count} categories" %>">
+      <%= "updated at: #{@recnetly_crawl.created_at.strftime("%b %d")}" %><br />
+			<%= "(#{@recnetly_crawl.project_count} projects)" %>
+    </div>
+    <% end %>
     <div id="header_nav">
       <ul>
         <li><%= link_to('Projects', projects_list_path) %></li>

@@ -137,15 +137,18 @@ div#header_title {
   margin-top: 45px;
   float: left;
 }
-div#header_title span#header_updated {
-  padding-left: 40px;
+div#header_info {
+  float: left;
+  margin-top: 57px;
+  margin-right: 25px;
+  padding-left: 65px;
   font-size: 9px;
-  text-shadow: none;
+  line-height: 1em;
 }
 
 div#header_nav {
   float: right;
-  margin-top: 45px;
+  margin-top: 53px;
   margin-right: 25px;
 }
 div#header_nav ul {
