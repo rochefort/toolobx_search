@@ -8,7 +8,7 @@ gem 'rails', '3.1.0'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql2', '>= 0.3'
 gem 'will_paginate', '3.0.pre2'
-gem 'thinking-sphinx', '2.0.2', :require => 'thinking_sphinx'
+gem 'thinking-sphinx', '2.0.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
