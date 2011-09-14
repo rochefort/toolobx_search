@@ -1,8 +1,6 @@
 /*
  Highcharts JS v2.0.1 (2010-07-18)
-
- (c) 2009-2010 Torstein Hønsi
-
+ 
  License: www.highcharts.com/license
 */
 (function(){function R(a,b){a||(a={});for(var c in b)a[c]=b[c];return a}function U(a){return a!==Ta&&a!==null}function na(a,b,c){var d,e="setAttribute",f;if(typeof b=="string")if(U(c))a[e](b,c);else{if(a&&a.getAttribute)f=a.getAttribute(b)}else if(U(b)&&typeof b=="object")for(d in b)a[e](d,b[d]);return f}function nc(a){if(!a||a.constructor!=Array)a=[a];return a}function A(){var a=arguments,b,c;for(b=0;b<a.length;b++){c=a[b];if(U(c))return c}}function oc(a){var b="",c;for(c in a)b+=pc(c)+":"+a[c]+
