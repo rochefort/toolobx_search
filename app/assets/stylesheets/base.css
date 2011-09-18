@@ -267,6 +267,15 @@ div#project_category {
   font-weight: bold;
 }
 
+div#project_category a {
+  color: #666;
+}
+
+div#project_category a:hover {
+  color: #ea1f00;
+}
+
+
 div#project_score {
   float: left;
   padding-top: 5px;
