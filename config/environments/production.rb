@@ -1,3 +1,4 @@
+#ENV['RAILS_RELATIVE_URL_ROOT'] = "/toolbox_search"
 ToolboxSearch::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
