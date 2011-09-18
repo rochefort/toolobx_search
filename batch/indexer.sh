@@ -1,4 +1,9 @@
 #!/bin/sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-cd /srv/rails/toolbox_search/current
-/usr/local/bin/rake RAILS_ENV=production thinking_sphinx:index > log/cron_indexer.log 2>&1
+bundle_bin=/home/trsw/.gem/ruby/1.9.1/bin/bundle
+
+log_file=log/cron_indexer.log
+date "+%Y%m%d %H:%M:%S" > $log_file 2>&1
+
+cd /usr/local/rails/toolbox_search/current
+$bundle_bin exec rake RAILS_ENV=production thinking_sphinx:index >> $log_file 2>&1
