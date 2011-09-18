@@ -143,7 +143,7 @@ div#header_title {
 }
 div#header_info {
   float: left;
-  margin-top: 57px;
+  margin-top: 55px;
   margin-right: 25px;
   padding-left: 65px;
   font-size: 9px;
@@ -274,7 +274,6 @@ div#project_category a {
 div#project_category a:hover {
   color: #ea1f00;
 }
-
 
 div#project_score {
   float: left;
@@ -536,16 +535,26 @@ div#categories_list th .sub-th {
   margin-bottom: 5px;
 }
 .about ul li {
+  padding-left: 1px;
   float: left;
 }
 
 .about ul li.list_date{ width: 100px; }
 .about ul li.list_version{ width: 50px; }
-.about ul li.list_description{ width: 200px; }
+.about ul li.list_description{ width: 400px; }
 
 .about strong{
   font-weight: bold;
 }
+
+div#about_description a {
+  color: #666;
+}
+
+div#about_description a:hover {
+  color: #ea1f00;
+}
+
 
 /* back button*/
 div#back_button {
