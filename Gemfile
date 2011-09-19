@@ -26,6 +26,9 @@ gem 'nokogiri'
 # deploy
 gem 'capistrano'
 
+# web server
+gem 'unicorn'
+
 group :development, :test do
 #  gem 'rspec-rails', '2.5.0'
 #  gem 'cucumber', '0.10.0'
@@ -33,13 +36,6 @@ group :development, :test do
 #  gem 'webrat', '0.7.3'
   gem 'rails-erd'
 end
-
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
