@@ -30,10 +30,13 @@ gem 'capistrano'
 gem 'unicorn'
 
 group :development, :test do
-#  gem 'rspec-rails', '2.5.0'
-#  gem 'cucumber', '0.10.0'
-#  gem 'cucumber-rails', '0.3.2'
-#  gem 'webrat', '0.7.3'
+  gem 'rspec-rails', '2.6.1'
+  #gem 'cucumber', '0.10.0'
+  #gem 'cucumber-rails', '0.3.2'
+  #gem 'webrat', '0.7.3'
+end
+
+group :development do
   gem 'rails-erd'
 end
 
@@ -43,7 +46,7 @@ end
 
 # Bundle the extra gems:
 # gem 'bj'
-# gem 'nokogiri'
+
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
