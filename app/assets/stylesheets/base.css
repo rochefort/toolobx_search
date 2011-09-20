@@ -144,8 +144,8 @@ div#header_title {
 div#header_info {
   float: left;
   margin-top: 55px;
-  margin-right: 25px;
-  padding-left: 65px;
+  margin-right: 10px;
+  padding-left: 60px;
   font-size: 9px;
   line-height: 1em;
 }
