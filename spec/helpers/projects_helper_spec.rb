@@ -41,8 +41,8 @@ describe ProjectsHelper do
       end
 
       describe '２回目以降の場合: when params[:order] is presence' do
-        context "order is project_d" do
-          before { controller.params = {:order => "project_d"} }
+        context 'order is project_d' do
+          before { controller.params = {:order => 'project_d'} }
           it_should_behave_like 'active_link_project', 'desc'
           it_should_behave_like 'deactive_link_category'
           it_should_behave_like 'deactive_link_score'
@@ -81,12 +81,37 @@ describe ProjectsHelper do
         end
       end
     end
+
     describe 'listing categories' do
       before { controller.params = {:controller => 'categories'} }
       context '初期表示の場合: when params[:order] is blank' do
         before { controller.params.merge!({:order => ""}) }
         it_should_behave_like 'active_link_category', 'asc'
         it_should_behave_like 'deactive_link_project_cnt'
+      end
+
+      describe '２回目以降の場合: when params[:order] is presence' do
+        context "order is category_d" do
+          before { controller.params.merge!({:order => 'category_d'}) }
+          it_should_behave_like 'active_link_category', 'desc'
+          it_should_behave_like 'deactive_link_project_cnt'
+        end
+        context "order is category_a" do
+          before { controller.params.merge!({:order => 'category_a'}) }
+          it_should_behave_like 'active_link_category', 'asc'
+          it_should_behave_like 'deactive_link_project_cnt'
+        end
+
+        context "order is project_cnt_d" do
+          before { controller.params.merge!({:order => 'project_cnt_d'}) }
+          it_should_behave_like 'deactive_link_category'
+          it_should_behave_like 'active_link_project_cnt', 'desc'
+        end
+        context "order is project_cnt_a" do
+          before { controller.params.merge!({:order => 'project_cnt_a'}) }
+          it_should_behave_like 'deactive_link_category'
+          it_should_behave_like 'active_link_project_cnt', 'asc'
+        end
       end
     end
   end
