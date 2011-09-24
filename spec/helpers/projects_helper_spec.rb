@@ -7,31 +7,33 @@ describe ProjectsHelper do
     # --
     # share examples
     # --
-    %w(project category score).each do |col|
+    %w(project category score project_cnt).each do |col|
       shared_examples_for("deactive_link_#{col}") { deactive_link(col) }
       shared_examples_for("active_link_#{col}") { |sort_type| active_link(col, sort_type) }
     end
 
     def self.deactive_link(col)
       subject { sort_link(col) }
+      let(:url) { controller.params[:controller] == 'categories' ? 'categories' : 'projects_list' }
       it { should have_selector('a') }
       it { should_not have_selector('a.active_sort') }
-      it { should have_link(col, :href => "/projects_list?order=#{col}_a") }
+      it { should have_link(col, :href => "/#{url}?order=#{col}_a") }
     end
 
     def self.active_link(col, sort_type)
       subject { sort_link(col) }
+      let(:url) { controller.params[:controller] == 'categories' ? 'categories' : 'projects_list' }
       let(:mark) { sort_type == 'asc' ? MARK_ASC : MARK_DESC }
       let(:order) { sort_type == 'asc' ? 'd' : 'a'}
       it {should have_selector('a.active_sort') }
-      it { should have_link("#{col}#{mark}", :href => "/projects_list?order=#{col}_#{order}") }
+      it { should have_link("#{col}#{mark}", :href => "/#{url}?order=#{col}_#{order}") }
     end
 
     # --
     # testing methods
     # --
     describe 'listing projects' do
-      before { controller.params = {:order => ""} }
+      before { controller.params = {:order => ''} }
       context '初期表示の場合: when params[:order] is blank' do
         it_should_behave_like 'deactive_link_project'
         it_should_behave_like 'deactive_link_category'
@@ -77,6 +79,14 @@ describe ProjectsHelper do
           it_should_behave_like 'deactive_link_category'
           it_should_behave_like 'active_link_score', 'asc'
         end
+      end
+    end
+    describe 'listing categories' do
+      before { controller.params = {:controller => 'categories'} }
+      context '初期表示の場合: when params[:order] is blank' do
+        before { controller.params.merge!({:order => ""}) }
+        it_should_behave_like 'active_link_category', 'asc'
+        it_should_behave_like 'deactive_link_project_cnt'
       end
     end
   end

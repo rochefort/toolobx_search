@@ -22,8 +22,9 @@ module ProjectsHelper
   def sort_link(column)
     mark  = get_sort_mark(column)
     query = {:search => params[:search], :order => get_sort_order(column, mark)}
+    url   = params[:controller] == 'categories' ? categories_path(query) : projects_list_path(query)
     opt   = mark.present?? {:class => 'active_sort'} : {}
-    link_to("#{column}#{mark}", projects_list_path(query), opt)
+    link_to("#{column}#{mark}", url, opt)
   end
 
   private
