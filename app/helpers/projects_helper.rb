@@ -1,5 +1,6 @@
-# coding: utf-8
+# -*- coding: UTF-8 -*-
 module ProjectsHelper
+
   def tag_cloud(tags)
     return if tags.empty?
     return if tags.size == 1
@@ -18,30 +19,46 @@ module ProjectsHelper
     end
   end
 
-  def sort_link(type)
-    link = type + link_to('▲', {:search => params[:search], :order => "#{type}_a"}, active_sort("#{type}_a")) +
-                  link_to('▼', {:search => params[:search], :order => "#{type}_d"}, active_sort("#{type}_d"))
-    link.html_safe
-  end
-
-  # sort未選択時は、score_aをactiveとする
-  def active_sort(sort_type)
-    avtive_value = { :class => 'active_sort' }
-    # project一覧初期表示用
-    return avtive_value if first_project_search?(sort_type)
-    # categories一覧初期表示用
-    return avtive_value if first_category_search?(sort_type)
-    # sort選択時は、クエリパラメータと比較
-    sort_type == params[:order]? avtive_value : {}
+  def sort_link(column)
+    mark  = get_sort_mark(column)
+    query = {:search => params[:search], :order => get_sort_order(column, mark)}
+    opt   = mark.present?? {:class => 'active_sort'} : {}
+    link_to("#{column}#{mark}", projects_list_path(query), opt)
   end
 
   private
-  def first_project_search?(sort_type)
-    params[:order].blank? and sort_type == 'score_d'
+  def get_sort_order(column, mark)
+    return "#{column}_a" if mark.blank?
+    mark == MARK_DESC ? "#{column}_a" : "#{column}_d"
   end
 
-  def first_category_search?(sort_type)
-    params[:controller] == 'categories' and params[:order].blank? and sort_type == 'category_d'
+  def get_sort_mark(column)
+    if first_search?
+      return MARK_ASC  if category_default_column?(column)
+      return MARK_DESC if project_default_column?(column)
+      return ''
+    end
+
+    if sortable_column?(column)
+      params[:order][-2, 2] == '_d' ? MARK_DESC : MARK_ASC
+    else
+      ''
+    end
   end
 
+  def first_search?
+    params[:order].blank?
+  end
+
+  def category_default_column?(column)
+    params[:controller] == 'categories' and column == 'category'
+  end
+  
+  def project_default_column?(column)
+    column == 'score'
+  end
+
+  def sortable_column?(column)
+    column == params[:order][0..-3]
+  end
 end

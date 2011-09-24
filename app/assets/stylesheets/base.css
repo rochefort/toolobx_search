@@ -484,7 +484,6 @@ div#categories_list th a {
 }
 .project_list th a.active_sort,
 div#categories_list th a.active_sort {
-  text-decoration: underline;
   color: #999;
 }
 .project_list th a:hover,

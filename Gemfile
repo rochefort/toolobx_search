@@ -30,11 +30,14 @@ gem 'capistrano'
 # web server
 gem 'unicorn'
 
-group :development, :test do
-  gem 'rspec-rails', '2.6.1'
+group :test do
+  gem 'rspec-rails', ">= 2.5.0"
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'capybara'
+  #gem 'webrat'
+  gem 'fuubar'
   #gem 'cucumber', '0.10.0'
   #gem 'cucumber-rails', '0.3.2'
-  #gem 'webrat', '0.7.3'
 end
 
 group :development do
