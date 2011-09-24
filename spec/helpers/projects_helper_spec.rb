@@ -17,7 +17,7 @@ describe ProjectsHelper do
       let(:url) { controller.params[:controller] == 'categories' ? 'categories' : 'projects_list' }
       it { should have_selector('a') }
       it { should_not have_selector('a.active_sort') }
-      it { should have_link(col, :href => "/#{url}?order=#{col}_a") }
+      it { should have_link(col, :href => "/#{url}?order=#{col}_#{DEFAULT_SORT_TYPE[col.to_sym]}") }
     end
 
     def self.active_link(col, sort_type)

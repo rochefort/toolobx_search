@@ -29,7 +29,9 @@ module ProjectsHelper
 
   private
   def get_sort_order(column, mark)
-    return "#{column}_a" if mark.blank?
+    return "#{column}_#{DEFAULT_SORT_TYPE[column.to_sym]}" if mark.blank?
+      #return "#{column}_a"
+    #end
     mark == MARK_DESC ? "#{column}_a" : "#{column}_d"
   end
 
