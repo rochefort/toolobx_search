@@ -45,14 +45,13 @@ class Project < ActiveRecord::Base
     end
 
     if keyword.blank?
-      popular(crawl_id, order).paginate(:page => page, :per_page => per_page)
+      popular(crawl_id, order).page(page).per(per_page)
     else
-      search(keyword, :page => page, :per_page => per_page,
-                      :include => [:category, :scores],
+      search(keyword, :include => [:category, :scores],
                       :with => {:crawl_id => crawl_id},
                       :star => true,
                       :sort_mode => :extended,
-                      :order => order)
+                      :order => order).page(page).per(per_page)
     end
   end
 

@@ -1,4 +1,4 @@
-<div class="clearfix">
+<div id="project_list" class="clearfix">
   <div class="project_list<%= " small" if params[:controller] == "categories" %>">
     <table>
       <tr>
@@ -19,6 +19,6 @@
       </tr>
     <% end %>
     </table>
-    <%= will_paginate projects_list %>
+    <%= paginate projects_list, :remote => true %>
   </div>
 </div>

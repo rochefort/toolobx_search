@@ -5,7 +5,7 @@
       <li class=<%= "level#{index}" %>><%= link_to(projects.name, projects) %></li>
     <% end %>
   </ul>
-  <% if tag_cloud.next_page %>
+  <% if tag_cloud.num_pages > 1 %>
   <span><%=link_to 'see more', most_popular_path(:search => params[:search]) %></span>
   <% end %>
 </div>

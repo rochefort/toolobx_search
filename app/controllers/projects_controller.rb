@@ -18,6 +18,11 @@ class ProjectsController < ApplicationController
   def list
     search_number = 50
     @projects = Project.search_keyword(@crawl_id, params[:search], params[:page], search_number, params[:order])
+
+    respond_to do |format|
+      format.html
+      format.js if request.xhr?
+    end
   end
 
   def most_popular

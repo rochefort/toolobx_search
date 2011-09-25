@@ -602,7 +602,7 @@ div#back_button a:hover {
   border-bottom:2px solid #88261a;
   color:#88261a;
   font-weight:bold;
-  padding-left:2px;
+  padding-left:4px;
   padding-right:2px;
 }
 .pagination .current a:hover {
