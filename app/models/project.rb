@@ -76,7 +76,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.for_a_week(name, link, crawl_id)
-    project = period(name, link, Crawl.before_id(crawl_id, 7), crawl_id).paginate(:page => 1, :per_page => 31)
+    project = period(name, link, Crawl.before_id(crawl_id, 7), crawl_id).page(1).per(31)
     return if project.size == 0
     
     { :name => name,
@@ -87,7 +87,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.for_a_month(name, link, crawl_id)
-    project = period(name, link, Crawl.before_id(crawl_id, 30), crawl_id).paginate(:page => 1, :per_page => 31)
+    project = period(name, link, Crawl.before_id(crawl_id, 30), crawl_id).page(1).per(31)
     return if project.size == 0
 
     { :name => name,
@@ -107,8 +107,7 @@ class Project < ActiveRecord::Base
     else "updated_at ASC"
     end
 
-    self.find(:all, :conditions => {:crawl_id => crawl_id, :category_id => category_id}, :order => order).
-         paginate(:page => 1, :per_page => 10000)
+    self.where(:crawl_id => crawl_id, :category_id => category_id).order(order).page(1).per(10000)
   end
 
 
