@@ -14,7 +14,7 @@ gem 'thinking-sphinx', '2.0.5'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'sass-rails',   "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
@@ -30,18 +30,20 @@ gem 'capistrano'
 # web server
 gem 'unicorn'
 
+group :develpoment do
+  gem 'wirble'
+  gem 'rails-erd'
+end
+
 group :test do
   gem 'rspec-rails', ">= 2.5.0"
   gem 'spork', '~> 0.9.0.rc'
   gem 'capybara'
   #gem 'webrat'
-  gem 'fuubar'
+  #gem 'fuubar'
+  gem 'factory_girl_rails'  # for rails3
   #gem 'cucumber', '0.10.0'
   #gem 'cucumber-rails', '0.3.2'
-end
-
-group :development do
-  gem 'rails-erd'
 end
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
