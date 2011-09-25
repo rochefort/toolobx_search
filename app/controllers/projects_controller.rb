@@ -10,6 +10,11 @@ class ProjectsController < ApplicationController
     @weekly_top10_projects   = Project.top10(Crawl.before_id(@crawl_id,  7), @crawl_id)
     @monthly_top10_projects  = Project.top10(Crawl.before_id(@crawl_id, 30), @crawl_id)
     @top10_projects          = Project.top10(@crawl_id, @crawl_id)
+
+    respond_to do |format|
+      format.html
+      format.js if request.xhr?
+    end
   end
 
   def about

@@ -1,0 +1,2 @@
+$(".tag_cloud").html("<%= escape_javascript(render :partial => 'shared/tag_cloud',:object => @projects) %>");
+$("#project_list").html("<%= escape_javascript(render :partial => 'shared/projects_list',:object => @projects) %>");
