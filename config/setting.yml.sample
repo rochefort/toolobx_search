@@ -1,1 +1,4 @@
 twitter_api_key: your_twitter_api_key
+crawler:
+  mail_to: to_address@example.com
+    mail_from: from_address@example.com
